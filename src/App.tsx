@@ -1,7 +1,8 @@
 import "./App.css";
+import Page from "./components/Page.tsx";
 
 function App() {
-  return <h1>welcome</h1>;
+  return <Page />;
 }
 
 export default App;
