@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Page = () => {
+const UrlInputPage = () => {
   const [urlInput, setUrlInput] = useState("");
   const isValidUrl = urlInput.includes("https://www.youtube.com");
+  const videoAnalysisPath = "./video";
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -16,7 +20,10 @@ const Page = () => {
         {isValidUrl ? (
           <button
             className="w-120 h-20 rounded-full mt-12 bg-stone-700 border-2 border-stone-400"
-            onClick={() => console.log("clicked")}
+            onClick={() => {
+              console.log("clicked");
+              navigate(videoAnalysisPath);
+            }}
           >
             <span className="text-3xl text-stone-400">Download</span>
           </button>
@@ -30,4 +37,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default UrlInputPage;
