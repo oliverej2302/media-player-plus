@@ -22,7 +22,9 @@ const UrlInputPage = () => {
         className={`w-120 h-20 ${videoID ? "cursor-pointer" : "cursor-default"} rounded-full mt-12 bg-stone-700 border-2 border-stone-400`}
         disabled={videoID == null}
         onClick={() => {
-          navigate(videoAnalysisPath + "/" + videoID);
+          navigate(videoAnalysisPath, {
+            state: { url: urlInput },
+          });
         }}
       >
         {videoID ? (
