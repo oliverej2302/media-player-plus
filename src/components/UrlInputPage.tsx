@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 const UrlInputPage = () => {
   const [urlInput, setUrlInput] = useState("");
-  const isValidUrl = urlInput.includes("https://www.youtube.com");
+  const urlRE = /(?<=[=/&])[a-zA-Z0-9_-]{11}(?=[=/&?#\n\r]|$)/;
+  //const isValidUrl = urlInput.includes("https://www.youtube.com");
+  const videoID = urlInput.match(urlRE);
   const videoAnalysisPath = "./video";
 
   const navigate = useNavigate();
@@ -17,12 +19,12 @@ const UrlInputPage = () => {
           value={urlInput}
           onChange={(e) => setUrlInput(e.target.value)}
         />
-        {isValidUrl ? (
+        {videoID ? (
           <button
             className="w-120 h-20 rounded-full mt-12 bg-stone-700 border-2 border-stone-400"
             onClick={() => {
               console.log("clicked");
-              navigate(videoAnalysisPath);
+              navigate(videoAnalysisPath + "/" + videoID);
             }}
           >
             <span className="text-3xl text-stone-400">Download</span>

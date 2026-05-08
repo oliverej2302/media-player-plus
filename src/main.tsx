@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/video",
+    path: "/video/:url",
     element: <VideoAnalysisPage />,
   },
 ]);
