@@ -5,27 +5,29 @@ const VideoAnalysisPage = () => {
   const { state } = useLocation();
   const { url } = state;
   const [cookies, setCookies] = useState("");
-  const [status, setStatus] = useState("Waiting for cookies...");
 
   const downloadVideo = async () => {
-    setStatus("Downloading...");
     const res = await fetch("https://getvideourl-aul5qp46xa-uc.a.run.app", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url, cookies }),
     });
-    const data = await res.json();
-    if (data.downloadUrl) {
-      const a = document.createElement("a");
-      a.href = data.downloadUrl;
-      a.download = "video.mp4";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setStatus("Done!");
-    } else {
-      setStatus("Failed: " + data.error);
+
+    if (!res.ok) {
+      const err = await res.text();
+      console.error("Download failed:", err);
+      return;
     }
+
+    const blob = await res.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = blobUrl;
+    a.download = "video.mp4";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(blobUrl);
   };
 
   return (
