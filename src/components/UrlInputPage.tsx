@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 const UrlInputPage = () => {
   const [urlInput, setUrlInput] = useState("");
   const urlRE = /(?<=[=/&])[a-zA-Z0-9_-]{11}(?=[=/&?#\n\r]|$)/;
-  //const isValidUrl = urlInput.includes("https://www.youtube.com");
   const videoID = urlInput.match(urlRE);
   const videoAnalysisPath = "./video";
 
