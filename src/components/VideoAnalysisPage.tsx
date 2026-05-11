@@ -36,17 +36,16 @@ const VideoAnalysisPage = () => {
         Paste your YouTube cookies:
       </span>
       <textarea
-        className="w-full h-40 p-2 text-black"
+        className="w-full h-40 p-2 text-stone-400 bg-stone-700 block"
         placeholder="Paste cookies.txt contents here..."
         onChange={(e) => setCookies(e.target.value)}
       />
       <button
-        className="bg-blue-500 text-white px-6 py-2 rounded"
+        className="w-120 h-20 cursor-pointer rounded-full mt-12 bg-stone-700 border-2 border-stone-400 text-3xl text-stone-400"
         onClick={downloadVideo}
       >
         Download
       </button>
-      <span className="text-stone-400">{status}</span>
     </div>
   );
 };

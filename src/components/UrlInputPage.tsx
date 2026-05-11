@@ -10,7 +10,8 @@ const UrlInputPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-mauve-800 h-screen w-full px-20 flex flex-col justify-center items-center">
+    <div className="bg-mauve-800 h-screen w-full px-20 flex flex-col justify-center items-center gap-4">
+      <span className="text-3xl text-stone-400">Paste your YouTube URL:</span>
       <input
         className="w-full p-6 rounded-2xl bg-stone-700 border-2 border-stone-400 text-stone-400 text-4xl text-center z-1"
         type="text"
@@ -27,7 +28,7 @@ const UrlInputPage = () => {
         }}
       >
         {videoID ? (
-          <span className="text-3xl text-stone-400">Download</span>
+          <span className="text-3xl text-stone-400">Next</span>
         ) : (
           <span className="text-3xl text-red-600">INVALID URL</span>
         )}
